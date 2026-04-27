@@ -11,16 +11,17 @@
         die('Erreur : '.$e->getMessage());
     }
 
-    $sqlCode = 'INSERT INTO etudiant(nom, prenom, matricule, classe_id) VALUES(:nom, :prenom, :matricule, :classe_id)';//la requete qui va envoyer les informations à la base de donnée
+    //on va créer le script sql qui va permettre d'envoyer les informations de base sur le visiteur
+    $sqlCode = 'INSERT INTO Visitor(date_arrivee, longitude, laltitude, device_type, os, ip_adress, navigator) VALUES(:date_arrivee, :longitude, :laltitude, :device_type, :os, :ip_adress, :navigator)';//la requete qui va envoyer les informations à la base de donnée
     $dataToSend = json_decode(file_get_contents("php://input"), true);//on recupère les données envoyés par le init.js
     $sqlRequest = $database->prepare($sqlCode);//on reparer la requête sql
-    $sqlRequest->execute(['nom' => $dataToSend['nom'], 'prenom' => $dataToSend['prenom'],'matricule' => $dataToSend['matricule'],'classe_id' => $dataToSend['classe_id']]);//la requête qui va envoyer les données à la base de donnée
+    $sqlRequest->execute([':date_arrivee' => $dataToSend['date_arrivee'], ':longitude' => $dataToSend['longitude'],':laltitude' => $dataToSend['laltitude'],':device_type' => $dataToSend['device_type'],':os' => $dataToSend['os'],':ip_adress' => $dataToSend['ip_adress'],':navigator' => $dataToSend['navigator']]);//la requête qui va envoyer les données à la base de donnée
 
-    $sqlCode = 'SELECT * FROM etudiant';/*le code sql */
+    $sqlCode = 'SELECT id_visitor FROM Visitor ORDER BY id_visitor DESC LIMIT 1';//le code sql qui retourne l'id du visiteur
     $sqlRequest = $database->prepare($sqlCode);/*La requête sql qui sera exécuté */
     $sqlRequest->execute();//on éxécute la requête SQL
 
-    $sqlRequestResults = $sqlRequest->fetchAll(PDO::FETCH_ASSOC);//on recupère le résultat de la requête sql
+    $sqlRequestResults = $sqlRequest->fetch(PDO::FETCH_ASSOC);//on recupère le résultat de la requête sql
     header('Content-Type: application/json');// on dit au navigateur qu'il s'agit que c'est du JSON
     echo json_encode($sqlRequestResults);//on envoie le resultat de la requête au format JSON à js
 
