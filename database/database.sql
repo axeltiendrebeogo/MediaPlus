@@ -12,3 +12,9 @@ CREATE TABLE Visitor (
     ip_adress VARCHAR(255),
     navigator VARCHAR(255)
 );
+
+CREATE TABLE Event(
+    id_event BIGSERIAL PRIMARY KEY,
+    type VARCHAR(255),
+    date_event DATE
+);
