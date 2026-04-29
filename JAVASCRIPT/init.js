@@ -2,14 +2,9 @@
 //--on commence par récuperer les informations qui seront envoyés à la base de donnée
 //--on créé une session storage qui va contenir l'id du visitor dans la base de donnée
 
-function initialize(){//cette fonction d'initialiser va se charger d'initialiser
-    if(sessionStorage.getItem("id_visitor") == null){//cela signifie tout simplement que c'est la première fois que le visiteur arrive sur le site web du media
-        if(window.XMLHttpRequest){
-            var request = new XMLHttpRequest();//on créé une nouvelle requête requestrequestRequest
-        }
-        else{
-            var request = new ActiveXObject("Microsoft.XMLHTTP");//pour les navigateurs IE5 et IE6
-        }
+export function initialize(){//cette fonction d'initialiser va se charger d'initialiser
+    if(sessionStorage.getItem("id_visitor") == null){//cela signifie tout simplement que c'est la première fois que le visiteur arrive sur le site web du  media
+        let request = new XMLHttpRequest();//on créé une nouvelle requête requestrequestRequest
         
         request.onreadystatechange = function(){
             //le code qui va s'exécuter si la requête est prête
@@ -17,11 +12,6 @@ function initialize(){//cette fonction d'initialiser va se charger d'initialiser
                 let result = JSON.parse(request.responseText);
                 //maintenant qu'on a eu la réponse c'est à dire l'id stockons là dans le sessionsstorage
                 sessionStorage.setItem("id_visitor", result.id_visitor);
-                alert("id is " + sessionStorage.getItem("id_visitor"));
-            }
-            else{
-                //sinon il y a erreur
-                alert("Erreur");
             }
         }
 
@@ -35,7 +25,7 @@ function initialize(){//cette fonction d'initialiser va se charger d'initialiser
             ip_adress: "192.168.1.2",
             navigator: "firefox"
         };//Nous allons envoyé un objet à la base de donnée
-        request.open("POST", "PHP/init.php");//chemin relatif à la racine du projet
+        request.open("POST", "http://172.16.9.53/api/init.php");//chemin relatif à la racine du projet
         request.setRequestHeader("Content-Type", "application/json");//les informations seront envoyés sous format json
         request.send(JSON.stringify(newVisitorData));//la requête est émise vers le serveur web pour être éxécuté et on passe en paramètres les données sous format JSON*/
     }
@@ -43,5 +33,3 @@ function initialize(){//cette fonction d'initialiser va se charger d'initialiser
         alert("id existe déjà et le voilà : "+ sessionStorage.getItem("id_visitor"));
     }
 }
-
-window.onload = initialize;//on executé cette fonction dès que la page se charge

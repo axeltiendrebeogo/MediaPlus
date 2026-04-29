@@ -12,7 +12,7 @@ function sendEventDataToDatabase(eventData, eventType){
             //alert("voici le résultat de la requête " + result.response);
         }
     }
-    request.open("POST", "PHP/event.php?phpRequest=" + eventType);//chemin relatif à la racine du projet
+    request.open("POST", "http://172.16.9.53/api/event.php?phpRequest=" + eventType);//chemin relatif à la racine du projet
     //requete permet de passer des arguments au script php et d'éxécuter différente tâche en fonction des arguments passés au script
     request.setRequestHeader("Content-Type", "application/json");//les informations seront envoyés sous format json
     request.send(JSON.stringify(eventData));//on envoie les données
@@ -27,10 +27,12 @@ function sendClickEventData(){//fonction qui sera exécuté en cas de clique d'u
 }
 
 /*Fin de la partie de définition des functions */
-const buttons = document.querySelectorAll("button");//document.querySelector va nous permettre de selections tous les buttons de notre page html
 
-for(let btn of buttons){
-    btn.addEventListener("click", sendClickEventData);//A chaque clique d'un bouton on envoi les données à la base de donnée
+//on va definir la fonction qui se charge d'écouter tous les évènements
+export function listenAllEvents(){//c'est la fonction qui se charge d'écouter tous les évènements
+    const buttons = document.querySelectorAll("button");//document.querySelector va nous permettre de selections tous les buttons de notre page html
+
+    for(let btn of buttons){
+        btn.addEventListener("click", sendClickEventData);//A chaque clique d'un bouton on envoi les données à la base de donnée
+    }
 }
-
-sendEventDataToDatabase(data, "hello");

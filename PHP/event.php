@@ -1,6 +1,6 @@
 <?php
 //la partie du script PHP qui se charge d'envoyer dans la base de donnée les informations relatifs au évènements
-
+	require_once __DIR__ . '/cors.php';
     function sendEventDataToDatabase($eventType){
         //on commence d'abord par créer le pdo et à ce connecter à la base de donnée
         include_once("database_info.php");//on charge en une seule fois les informations

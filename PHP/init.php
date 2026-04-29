@@ -2,6 +2,7 @@
 /*Le fichier init.php contient le code php à éxécuter dès qu'on nouveau visiteur arrive sur le site web du média
 **Il créé d'abord un nouveau champ dans la table visiteur de la base de donnée
 **Il retourne au fichier init.js l'id du dernier visiteur ajouté à la base de donnée. */
+	require_once __DIR__ . '/cors.php';
     include_once("database_info.php");/*On inclut les informations necessaires à la connexion à la base de donnée */
     try{
         $database = new PDO($databaseName,$databaseUsername,$databaseUserPassword,[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
