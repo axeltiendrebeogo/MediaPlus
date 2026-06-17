@@ -1,0 +1,6 @@
+"id","nom_media","domaine","registrant_nom","registrant_email","registrant_pays","date_creation","date_expiration","registrar","nameservers","adresse_ip","source","collecte_le"
+1,"Lefaso.net","lefaso.net","REDACTED FOR PRIVACY","abuse@ovh.net","FR","2003-08-25","2026-08-25","OVH, SAS","DNS.OVH.NET,NS.OVH.NET","137.74.95.85","python-whois","2026-05-30 09:58:40.363681"
+2,"Burkina 24","burkina24.net","DJOUMA BARRO","abuse@name.com","BF","2019-03-28","2027-03-28","Name.com, Inc.","NS1DJS.NAME.COM,NS2DQR.NAME.COM,NS3FGQ.NAME.COM,NS4HNY.NAME.COM","75.126.101.230","python-whois","2026-05-30 09:58:48.451961"
+3,"RTB Burkina","rtb.bf","Redacted | Registry Policy","infos@ikasolution.bf","BF","2021-01-01","2026-11-06","IKA SOLUTION","dns11.ovh.net,ns11.ovh.net","213.186.33.4","python-whois","2026-05-30 09:58:55.976602"
+4,"Omega BF","omegabf.net","Redacted for GDPR privacy","support@namebright.com","KH","2022-09-18","2026-09-18","DropCatch.com 927 LLC","DNS1.NAMECHEAPHOSTING.COM,DNS2.NAMECHEAPHOSTING.COM","162.0.215.155","python-whois","2026-05-30 09:59:04.07972"
+5,"Sidwaya","sidwaya.bf","Redacted | Registry Policy","bf@ecodev.dev","BF","2021-01-01","2025-10-29","ECODEV INTERNATIONAL","dns19.ovh.net,ns19.ovh.net",NULL,"python-whois","2026-05-30 09:59:12.607653"
