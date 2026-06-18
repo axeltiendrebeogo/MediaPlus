@@ -1,0 +1,88 @@
+.generer-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.generer-params { padding: 24px; }
+
+.generer-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.generer-type-select { font-size: 18px; font-weight: 600; padding: 12px 14px; }
+
+.comp-media-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.media-chip {
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .15s;
+  color: var(--color-text);
+}
+.media-chip:hover { border-color: var(--color-primary); }
+
+.sections-checks { display: flex; gap: 20px; }
+.section-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.section-check input { accent-color: var(--color-primary); width: 16px; height: 16px; }
+
+.quota-inline {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  padding: 8px 12px;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+}
+.quota-warn { color: var(--color-danger); }
+
+/* Preview */
+.generer-preview {}
+
+.preview-items { display: flex; flex-direction: column; gap: 8px; }
+
+.preview-item {
+  padding: 10px 14px;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-light);
+}
+.preview-item.highlight {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border-color: var(--color-success-border);
+}
+
+.quota-info-card {}
+.quota-info-text {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Success state */
+.rapport-success {
+  text-align: center;
+  padding: 48px 40px;
+}
+.rapport-success-icon { font-size: 48px; margin-bottom: 16px; }
+.rapport-success h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.rapport-success p { color: var(--color-text-secondary); font-size: 14px; }

@@ -1,0 +1,67 @@
+.btn-retour {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+.btn-retour:hover { text-decoration: underline; }
+
+.pic-audience {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.scroll-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.scroll-section-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scroll-section-label {
+  width: 72px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+/* barre-track et barre-fill sont déjà définis dans GestionnaireDashboard.css
+   Pas besoin de les redéfinir — ils viennent du CSS global via index.css
+   Si tu vois un bug, ajoute-les ici aussi : */
+.barre-track {
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.barre-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width .4s ease;
+}
+
+.scroll-section-pct {
+  width: 34px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.scroll-sections-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.kpi-delta-neg { color: var(--color-danger) !important; }
