@@ -1,0 +1,12 @@
+/* Le gestionnaire réutilise le même AdminLayout de base.
+   On surcharge juste les couleurs du rôle. */
+
+.gest-role {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.gest-avatar {
+  background: #dcfce7;
+  color: #166534;
+}

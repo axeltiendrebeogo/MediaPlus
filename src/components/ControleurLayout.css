@@ -1,0 +1,11 @@
+/* Contrôleur uses the same AdminLayout base styles */
+/* Just override the role badge color */
+.ctrl-role {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.ctrl-avatar {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
