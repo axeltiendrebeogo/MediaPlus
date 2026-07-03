@@ -1,0 +1,105 @@
+{% load mediapulse_extras %}
+<!-- Section 2 — Résumé exécutif (KPI) -->
+<h2>Résumé exécutif</h2>
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="kpi-label">Visiteurs uniques</div>
+        <div class="kpi-valeur">{{ kpi.visiteurs_uniques }}</div>
+        <div class="{% if kpi.delta_visiteurs >= 0 %}delta-up{% else %}delta-down{% endif %}">
+            {{ kpi.delta_visiteurs }}% vs période précédente
+        </div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Pages vues</div>
+        <div class="kpi-valeur">{{ kpi.pages_vues }}</div>
+        <div class="{% if kpi.delta_pages_vues >= 0 %}delta-up{% else %}delta-down{% endif %}">
+            {{ kpi.delta_pages_vues }}% vs période précédente
+        </div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Durée moyenne</div>
+        <div class="kpi-valeur">{{ kpi.duree_moyenne|mmss }}</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Scroll moyen</div>
+        <div class="kpi-valeur">{{ kpi.scroll_moyen }}%</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Taux de rebond</div>
+        <div class="kpi-valeur">{{ kpi.taux_rebond }}%</div>
+    </div>
+</div>
+
+{% if inclure_graphiques and graphiques %}
+<h2>Graphiques</h2>
+
+<h3>Sources de trafic</h3>
+{% for s in graphiques.sources %}
+<div class="ligne-barre">
+    <div class="label">{{ s.source }}</div>
+    <div class="barre-fond"><div class="barre-remplie" style="width: {{ s.pct }}%; background: {{ s.couleur }};"></div></div>
+    <div class="valeur">{{ s.pct }}%</div>
+</div>
+{% endfor %}
+
+<h3>Répartition par appareil</h3>
+{% for a in graphiques.appareils %}
+<div class="ligne-barre">
+    <div class="label">{{ a.type|capfirst }}</div>
+    <div class="barre-fond"><div class="barre-remplie" style="width: {{ a.pct }}%;"></div></div>
+    <div class="valeur">{{ a.pct }}%</div>
+</div>
+{% endfor %}
+
+<h3>Évolution du trafic (7 derniers jours de la période)</h3>
+<table>
+    <tr><th>Date</th><th>Pages vues</th><th>Visiteurs</th></tr>
+    {% for j in graphiques.trafic_journalier|slice:"-7:" %}
+    <tr><td>{{ j.date }}</td><td>{{ j.vues }}</td><td>{{ j.visiteurs }}</td></tr>
+    {% endfor %}
+</table>
+
+{% if graphiques.completion_audio_video %}
+<h3>Taux de complétion — contenus audio/vidéo</h3>
+<table>
+    <tr><th>Contenu</th><th>Type</th><th>Lectures</th><th>Complétion</th></tr>
+    {% for c in graphiques.completion_audio_video %}
+    <tr><td>{{ c.titre|truncatechars:40 }}</td><td>{{ c.type|capfirst }}</td><td>{{ c.nb_lectures }}</td><td>{{ c.taux_completion }}%</td></tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endif %}
+
+{% if inclure_stats and stats_detaillees %}
+<h2>Statistiques détaillées</h2>
+
+<h3>Top 10 des pages les plus vues</h3>
+<table>
+    <tr><th>Page</th><th>Vues</th><th>Durée moy.</th><th>Scroll moy.</th><th>Tendance</th></tr>
+    {% for p in stats_detaillees.top_pages %}
+    <tr>
+        <td>{{ p.nom|truncatechars:50 }}</td>
+        <td>{{ p.vues }}</td>
+        <td>{{ p.duree_moyenne|mmss }}</td>
+        <td>{{ p.scroll_moyen }}%</td>
+        <td>{% if p.tendance == "up" %}↑ hausse{% else %}↓ baisse{% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Répartition par navigateur</h3>
+<table>
+    <tr><th>Navigateur</th><th>%</th></tr>
+    {% for n in stats_detaillees.repartition_navigateurs %}
+    <tr><td>{{ n.label }}</td><td>{{ n.pct }}%</td></tr>
+    {% endfor %}
+</table>
+
+<h3>Répartition par système d'exploitation</h3>
+<table>
+    <tr><th>OS</th><th>%</th></tr>
+    {% for o in stats_detaillees.repartition_os %}
+    <tr><td>{{ o.label }}</td><td>{{ o.pct }}%</td></tr>
+    {% endfor %}
+</table>
+{% endif %}

@@ -1,0 +1,74 @@
+{% load mediapulse_extras %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<style>
+    @page {
+        size: A4;
+        margin: 2cm 1.8cm;
+        @bottom-center {
+            content: "Généré par MediaPulse le {{ date_generation }}";
+            font-size: 8pt;
+            color: #94A3B8;
+        }
+    }
+    body { font-family: 'DejaVu Sans', Arial, sans-serif; color: #1E293B; font-size: 10pt; }
+    h1 { color: #1E3A8A; font-size: 20pt; margin-bottom: 2pt; }
+    h2 { color: #1E3A8A; font-size: 14pt; border-bottom: 2px solid #3B82F6; padding-bottom: 4pt; margin-top: 22pt; }
+    h3 { color: #334155; font-size: 11pt; margin-top: 14pt; }
+    .en-tete { background: #EFF6FF; padding: 14pt; border-radius: 6pt; margin-bottom: 10pt; }
+    .meta { color: #475569; font-size: 9pt; }
+    .kpi-grid { display: flex; flex-wrap: wrap; gap: 8pt; margin: 10pt 0; }
+    .kpi-card { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6pt; padding: 8pt 12pt; width: 30%; box-sizing: border-box; }
+    .kpi-valeur { font-size: 16pt; font-weight: bold; color: #1E3A8A; }
+    .kpi-label { font-size: 8pt; color: #64748B; text-transform: uppercase; }
+    .delta-up { color: #10B981; font-size: 8pt; }
+    .delta-down { color: #EF4444; font-size: 8pt; }
+    table { width: 100%; border-collapse: collapse; margin: 8pt 0; font-size: 9pt; }
+    th { background: #1E3A8A; color: white; text-align: left; padding: 6pt 8pt; }
+    td { padding: 5pt 8pt; border-bottom: 1px solid #E2E8F0; }
+    tr:nth-child(even) td { background: #F8FAFC; }
+    .barre-fond { background: #E2E8F0; border-radius: 4pt; height: 14pt; width: 100%; overflow: hidden; }
+    .barre-remplie { background: #3B82F6; height: 14pt; }
+    .ligne-barre { display: flex; align-items: center; gap: 8pt; margin: 5pt 0; }
+    .ligne-barre .label { width: 28%; font-size: 9pt; }
+    .ligne-barre .barre-fond { width: 52%; }
+    .ligne-barre .valeur { width: 12%; font-size: 9pt; text-align: right; }
+    .media-section { page-break-before: always; }
+</style>
+</head>
+<body>
+
+<!-- Section 1 — En-tête -->
+<div class="en-tete">
+    <h1>{{ titre }}</h1>
+    <div class="meta">
+        Période analysée : du {{ periode_debut }} au {{ periode_fin }}<br>
+        Généré le {{ date_generation }} par {{ genere_par_nom }}
+    </div>
+</div>
+
+{% if type_rapport == "media" %}
+    {% include "rapports/_section_media.html" with kpi=kpi graphiques=graphiques stats_detaillees=stats_detaillees inclure_graphiques=inclure_graphiques inclure_stats=inclure_stats %}
+{% else %}
+    {% for section in sections_par_media %}
+    <div class="media-section" {% if forloop.first %}style="page-break-before: avoid;"{% endif %}>
+        <h2>{{ section.media_nom }}</h2>
+        {% include "rapports/_section_media.html" with kpi=section.kpi graphiques=section.graphiques stats_detaillees=section.stats_detaillees inclure_graphiques=inclure_graphiques inclure_stats=inclure_stats %}
+    </div>
+    {% endfor %}
+
+    {% if comparaison %}
+    <h2>Comparaison multi-médias</h2>
+    <table>
+        <tr><th>Média</th><th>Visiteurs uniques (période)</th></tr>
+        {% for c in comparaison.comparaison_kpi %}
+        <tr><td>{{ c.media_nom }}</td><td>{{ c.valeur }}</td></tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+{% endif %}
+
+</body>
+</html>
