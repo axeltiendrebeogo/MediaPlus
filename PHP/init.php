@@ -12,18 +12,45 @@
         die('Erreur : '.$e->getMessage());
     }
 
+    $realIpAddress = $_SERVER['REMOTE_ADDR'];
     //on va créer le script sql qui va permettre d'envoyer les informations de base sur le visiteur
-    $sqlCode = 'INSERT INTO Visitor(date_arrivee, longitude, laltitude, device_type, os, ip_adress, navigator) VALUES(:date_arrivee, :longitude, :laltitude, :device_type, :os, :ip_adress, :navigator)';//la requete qui va envoyer les informations à la base de donnée
+    $sqlCode = 'INSERT INTO Visitor(date_visite, platform, langue, ip_address) VALUES(NOW(), :platform, :langue, :ip_address)';//la requete qui va envoyer les informations à la base de donnée
     $dataToSend = json_decode(file_get_contents("php://input"), true);//on recupère les données envoyés par le init.js
     $sqlRequest = $database->prepare($sqlCode);//on reparer la requête sql
-    $sqlRequest->execute([':date_arrivee' => $dataToSend['date_arrivee'], ':longitude' => $dataToSend['longitude'],':laltitude' => $dataToSend['laltitude'],':device_type' => $dataToSend['device_type'],':os' => $dataToSend['os'],':ip_adress' => $dataToSend['ip_adress'],':navigator' => $dataToSend['navigator']]);//la requête qui va envoyer les données à la base de donnée
+    $succes = $sqlRequest->execute([
+        ':platform' => $dataToSend['platform'],
+        ':langue' => $dataToSend['langue'],
+        ':ip_address' => $realIpAddress, //parce que javascript ne permet d'obtenir l'adresse ip
+    ]);//la requête qui va envoyer les données à la base de donnée
 
-    $sqlCode = 'SELECT id_visitor FROM Visitor ORDER BY id_visitor DESC LIMIT 1';//le code sql qui retourne l'id du visiteur
-    $sqlRequest = $database->prepare($sqlCode);/*La requête sql qui sera exécuté */
-    $sqlRequest->execute();//on éxécute la requête SQL
+    if($succes){//si tout c'est bien passé
 
-    $sqlRequestResults = $sqlRequest->fetch(PDO::FETCH_ASSOC);//on recupère le résultat de la requête sql
-    header('Content-Type: application/json');// on dit au navigateur qu'il s'agit que c'est du JSON
-    echo json_encode($sqlRequestResults);//on envoie le resultat de la requête au format JSON à js
+        $lastId = $database->lastInsertId();//retourne l'id du dernier élément inséré
 
+        //maintenant on doit chercher à recupérer l'id de la page web
+        $sqlCode = 'SELECT id_pageweb FROM pageweb where url = :url';
+        $sqlRequest = $database->prepare($sqlCode);
+        $sqlRequest->execute([':url' => $dataToSend['url']]);
+        $pageWeb_id = $sqlRequest->fetch(PDO::FETCH_ASSOC);//nous retourne le résultat de la commande
+
+        if($pageWeb_id === false){//dans le cas contraire on envoie la donnée dans la base de donnée
+            $sqlCode = 'INSERT INTO pageweb(id_media, url, collecte_le) VALUES(:id_media, :url, NOW())';
+            $sqlRequest = $database->prepare($sqlCode);//on prepare la requête
+            $sqlRequest->execute([
+                ':id_media' => $dataToSend['id_media'],
+                ':url' => $dataToSend['url']]);
+            $lastPageWebAddId = $database->lastInsertId();//l'id du dernier élément ajouté
+            $response = ["id_visitor" => $lastId,"id_pageweb" => $lastPageWebAddId];
+        }
+        else{//si l'url existe dejà dans la base de donnée pas la peine de l'ajouter
+            $response = ["id_visitor" => $lastId, "id_pageweb" => $pageWeb_id['id_pageweb']];
+        }
+        header('Content-Type: application/json');// on dit au navigateur qu'il s'agit que c'est du JSON
+        echo json_encode($response);//on envoie le resultat de la requête au format JSON à js
+    }
+    else{
+        http_response_code(500);//le numéro de retour d'erreur
+        header('Content-Type: application/json');// on dit au navigateur qu'il s'agit que c'est du JSON
+        echo json_encode(['status' => 'error', 'message' => 'insertion échouée']);
+    }
 ?>
