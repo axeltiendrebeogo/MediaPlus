@@ -54,43 +54,82 @@ export default function HomePage() {
 
       {/* ── Hero ── */}
       <section className="hero">
-        <div className="hero-inner">
-          <span className="hero-badge">Plateforme professionnelle</span>
-          <h1 className="hero-headline">
-            Comprenez votre audience.<br />
-            <span className="text-primary">Développez votre impact.</span>
-          </h1>
-          <p className="hero-desc">
-            FasoMedia Insights centralise l'analyse d'audience de vos médias en ligne. Visiteurs,
-            comportements, contenus — toutes vos données en un seul endroit.
-          </p>
-          <div className="hero-actions">
-            <button className="btn btn-primary btn-lg" onClick={() => navigate('/connexion')}>
-              Accéder à la plateforme
-            </button>
-            <button
-              className="btn btn-secondary btn-lg"
-              onClick={() => document.getElementById('features').scrollIntoView({ behavior: 'smooth' })}
-            >
-              Découvrir les services
-            </button>
+        <div className="hero-grid">
+          <div className="hero-inner">
+            <span className="hero-badge">Plateforme professionnelle</span>
+            <h1 className="hero-headline">
+              Comprenez votre audience.<br />
+              <span className="text-primary">Développez votre impact.</span>
+            </h1>
+            <p className="hero-desc">
+              FasoMedia Insights centralise l'analyse d'audience de vos médias en ligne. Visiteurs,
+              comportements, contenus — toutes vos données en un seul endroit.
+            </p>
+            <div className="hero-actions">
+              <button className="btn btn-primary btn-lg" onClick={() => navigate('/connexion')}>
+                Accéder à la plateforme
+              </button>
+              <button
+                className="btn btn-secondary btn-lg"
+                onClick={() => document.getElementById('features').scrollIntoView({ behavior: 'smooth' })}
+              >
+                Découvrir les services
+              </button>
+            </div>
+
+            {/* Stats */}
+            <div className="hero-stats">
+              <div className="hero-stat">
+                <span className="hero-stat-value text-primary">+18%</span>
+                <span className="hero-stat-label">Croissance audience</span>
+              </div>
+              <div className="hero-stat-divider" />
+              <div className="hero-stat">
+                <span className="hero-stat-value text-primary">4</span>
+                <span className="hero-stat-label">Types de médias</span>
+              </div>
+              <div className="hero-stat-divider" />
+              <div className="hero-stat">
+                <span className="hero-stat-value text-primary">100%</span>
+                <span className="hero-stat-label">Données sécurisées</span>
+              </div>
+            </div>
           </div>
 
-          {/* Stats */}
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <span className="hero-stat-value text-primary">+18%</span>
-              <span className="hero-stat-label">Croissance audience</span>
-            </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="hero-stat-value text-primary">4</span>
-              <span className="hero-stat-label">Types de médias</span>
-            </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="hero-stat-value text-primary">100%</span>
-              <span className="hero-stat-label">Données sécurisées</span>
+          {/* Aperçu produit */}
+          <div className="hero-visual" aria-hidden="true">
+            <div className="hero-preview-card">
+              <div className="hero-preview-header">
+                <span className="hero-preview-dot" />
+                <span className="hero-preview-dot" />
+                <span className="hero-preview-dot" />
+                <span className="hero-preview-title">Tableau de bord</span>
+              </div>
+              <div className="hero-preview-body">
+                <div className="hero-preview-chart">
+                  <div className="hero-bar" style={{ height: '40%' }} />
+                  <div className="hero-bar" style={{ height: '65%' }} />
+                  <div className="hero-bar" style={{ height: '50%' }} />
+                  <div className="hero-bar" style={{ height: '80%' }} />
+                  <div className="hero-bar" style={{ height: '60%' }} />
+                  <div className="hero-bar hero-bar-active" style={{ height: '95%' }} />
+                  <div className="hero-bar" style={{ height: '70%' }} />
+                </div>
+                <div className="hero-preview-rows">
+                  <div className="hero-preview-row">
+                    <span className="hero-preview-row-label">Radio Faso FM</span>
+                    <span className="hero-preview-row-value text-primary">2 340 écoutes</span>
+                  </div>
+                  <div className="hero-preview-row">
+                    <span className="hero-preview-row-label">Le Quotidien BF</span>
+                    <span className="hero-preview-row-value text-primary">14 820 vues</span>
+                  </div>
+                  <div className="hero-preview-row">
+                    <span className="hero-preview-row-label">SportInfo TV</span>
+                    <span className="hero-preview-row-value text-primary">6 105 vues</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
