@@ -1,0 +1,102 @@
+.login-bg {
+  min-height: 100vh;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-md);
+}
+
+.login-brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.login-brand-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -.02em;
+}
+.login-brand-sub {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.login-header { margin-bottom: 20px; }
+.login-title { font-size: 17px; font-weight: 600; color: var(--color-text); margin-bottom: 4px; }
+.login-subtitle { font-size: 13px; color: var(--color-text-secondary); }
+
+/* Role selector */
+.role-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.role-btn {
+  flex: 1;
+  padding: 10px 8px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+.role-btn:hover { border-color: var(--color-primary); background: var(--color-primary-light); }
+.role-btn.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+.role-btn-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+.role-btn-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-top: 1px;
+}
+.role-btn.active .role-btn-sub { color: var(--color-primary); }
+
+/* Form */
+.login-form { display: flex; flex-direction: column; gap: 16px; }
+
+.login-forgot { display: flex; justify-content: flex-end; margin-top: 4px; }
+.forgot-link {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+.forgot-link:hover { text-decoration: underline; }
+
+.login-error {
+  padding: 10px 14px;
+  background: var(--color-danger-bg);
+  border: 1px solid var(--color-danger-border);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-size: 13px;
+}
+
+.login-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}

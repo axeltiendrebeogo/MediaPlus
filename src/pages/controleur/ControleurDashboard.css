@@ -1,0 +1,49 @@
+.perf-mini-card { padding: 20px; }
+
+.perf-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.perf-mini {
+  padding: 12px;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+}
+
+.perf-mini-name {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.perf-mini-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.perf-mini-label { font-size: 11px; color: var(--color-text-secondary); }
+.perf-mini-val   { font-size: 14px; font-weight: 600; }
+
+.perf-mini-bar-track {
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+  margin-bottom: 4px;
+  overflow: hidden;
+}
+.perf-mini-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.perf-mini-scroll { font-size: 11px; color: var(--color-text-secondary); }
+
+.perf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

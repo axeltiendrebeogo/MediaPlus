@@ -1,0 +1,47 @@
+.affectation-table th { padding: 12px 20px; }
+.affectation-table td { padding: 14px 20px; }
+
+.row-warning td { background: #fffbeb; }
+
+.affectation-media-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.affectation-media-sub  { font-size: 12px; color: var(--color-text-secondary); }
+
+.gestionnaire-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+.gestionnaire-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary-muted);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.sans-gestionnaire {
+  font-size: 13px;
+  color: var(--color-danger);
+  font-weight: 500;
+}
+
+.affectation-select { min-width: 180px; }
+.select-warning {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.affectation-success {
+  font-size: 13px;
+  color: var(--color-success);
+  font-weight: 500;
+}
+
+.kpi-sub {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
