@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous - FasoHorizon</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- EXTRA_TRACKING_SCRIPTS_PLACEHOLDER -->
+</head>
+<body>
+    
+    <header class="main-header">
+        <div class="container">
+            <div class="header-top">
+                <a href="index.html" class="logo-link" id="site-logo">
+                    <div class="logo-flag">
+                        <div class="logo-flag-red"></div>
+                        <div class="logo-flag-green"></div>
+                        <span class="logo-flag-star">★</span>
+                    </div>
+                    FASO<span class="horizon">HORIZON</span>
+                </a>
+                <div class="date-weather">
+                    <span id="header-date-text">Mardi 14 Juillet 2026</span>
+                    <span class="weather-badge" id="header-weather-badge">☼ Ouagadougou 34°C</span>
+                </div>
+                <button class="nav-toggle" id="nav-toggle-btn" aria-label="Menu principal">&#9776;</button>
+            </div>
+            <div class="nav-container">
+                
+    <nav class="main-nav" id="main-nav-menu">
+        <ul class="nav-list">
+            <li class="nav-item "><a href="index.html" id="nav-link-home">Accueil</a></li>
+            <li class="nav-item "><a href="politique.html" id="nav-link-politique">Politique</a></li>
+<li class="nav-item "><a href="economie.html" id="nav-link-economie">Économie</a></li>
+<li class="nav-item "><a href="societe.html" id="nav-link-societe">Société</a></li>
+<li class="nav-item "><a href="sport.html" id="nav-link-sport">Sport</a></li>
+<li class="nav-item "><a href="culture.html" id="nav-link-culture">Culture</a></li>
+<li class="nav-item "><a href="international.html" id="nav-link-international">International</a></li>
+<li class="nav-item "><a href="videos.html" id="nav-link-videos">Vidéos</a></li>
+
+            <li class="nav-item "><a href="a-propos.html" id="nav-link-about">À propos</a></li>
+            <li class="nav-item active"><a href="contact.html" id="nav-link-contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+            </div>
+        </div>
+        <div class="ticker-bar" id="breaking-ticker">
+            <span class="ticker-label" id="ticker-lbl">ALERTE INFO</span>
+            <div class="ticker-content">
+                <ul class="ticker-items" id="ticker-list">
+                    <li><a href="articles/securite-alimentaire-stocks-cereales.html">Sécurité Alimentaire : L'État renforce la régulation des prix des céréales pour la période de soudure</a></li><li><a href="articles/transition-administration-reformes.html">Réforme de l'Administration Publique : Quel bilan à mi-parcours pour la dématérialisation ?</a></li><li><a href="articles/video-siao-ouaga.html">Reportage : L'excellence de l'artisanat d'art au SIAO Ouaga</a></li><li><a href="articles/mines-or-enjeux-ecologiques.html">Mines d'or au Burkina Faso : La double réalité économique et environnementale</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+
+    <main class="container mt-4 mb-4">
+        
+    <div class="contact-container">
+        <h2>Nous Contacter</h2>
+        <p>Vous souhaitez des informations complémentaires ou faire une remarque sur la plateforme de test ? Remplissez ce formulaire. Les événements d'envoi sont interceptables par vos scripts.</p>
+        
+        <form id="contact-form" class="contact-form" action="#" method="POST">
+            <div class="form-group">
+                <label for="contact-name">Nom complet</label>
+                <input type="text" id="contact-name" name="name" required placeholder="Ex: Seydou Kaboré">
+            </div>
+            
+            <div class="form-group">
+                <label for="contact-email">Adresse e-mail</label>
+                <input type="email" id="contact-email" name="email" required placeholder="Ex: seydou@example.bf">
+            </div>
+            
+            <div class="form-group">
+                <label for="contact-subject">Objet du message</label>
+                <input type="text" id="contact-subject" name="subject" required placeholder="Ex: Questions sur l'instrumentation">
+            </div>
+            
+            <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" required placeholder="Écrivez votre message ici..."></textarea>
+            </div>
+            
+            <button type="submit" id="contact-submit" class="btn-primary">Envoyer le message</button>
+            <div id="contact-feedback" style="display:none; padding:15px; border-radius: var(--radius-sm); margin-top:15px; font-weight:bold;"></div>
+        </form>
+    </div>
+    
+    </main>
+
+    
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h4>
+                        <div class="logo-flag" style="width: 24px; height: 16px; display: inline-flex; vertical-align: middle;">
+                            <div class="logo-flag-red"></div>
+                            <div class="logo-flag-green"></div>
+                            <span class="logo-flag-star" style="font-size:10px;">★</span>
+                        </div>
+                        FasoHorizon
+                    </h4>
+                    <p>FasoHorizon est un portail d'information fictif simulant un média en ligne burkinabè. Cette plateforme sert exclusivement de cible d'instrumentation pour tester des trackers JS et des systèmes d'analyses d'audience dans des conditions réelles.</p>
+                    <div class="footer-socials">
+                        <a href="#" id="footer-social-fb" aria-label="Facebook">FB</a>
+                        <a href="#" id="footer-social-tw" aria-label="Twitter">TW</a>
+                        <a href="#" id="footer-social-yt" aria-label="YouTube">YT</a>
+                    </div>
+                </div>
+                <div class="footer-links-col">
+                    <h5>Rubriques</h5>
+                    <ul class="footer-links">
+                        <li><a href="politique.html">Politique</a></li>
+                        <li><a href="economie.html">Économie</a></li>
+                        <li><a href="societe.html">Société</a></li>
+                        <li><a href="sport.html">Sport</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="international.html">International</a></li>
+                        <li><a href="videos.html">Vidéos & Multimédia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h5>Newsletter</h5>
+                    <div class="newsletter-box">
+                        <h4>Faso Actu Lettre</h4>
+                        <p>Recevez l'essentiel de l'actualité burkinabè dans votre boîte mail.</p>
+                        <form id="newsletter-form" action="#" method="POST">
+                            <div class="form-group">
+                                <input type="email" id="newsletter-email" class="form-input" placeholder="Votre adresse email" required>
+                            </div>
+                            <button type="submit" id="newsletter-submit" class="btn-primary">S'abonner</button>
+                            <div id="newsletter-feedback" class="form-feedback"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FasoHorizon. Tous droits réservés. Projet de test pour métriques d'audience.</p>
+                <div class="footer-bottom-links">
+                    <a href="mentions-legales.html" id="footer-link-legal">Mentions Légales</a>
+                    <a href="a-propos.html" id="footer-link-about">À Propos</a>
+                    <a href="contact.html" id="footer-link-contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
