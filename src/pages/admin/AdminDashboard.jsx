@@ -42,9 +42,6 @@ export default function AdminDashboard() {
     <AdminLayout pageTitle="Vue globale">
       <div className="page-eyebrow">ADMINISTRATION</div>
       <h1 className="page-title">Vue d'ensemble globale</h1>
-      <p className="page-subtitle">
-        Compteurs de gestion — l'administrateur n'a pas accès aux statistiques d'audience
-      </p>
 
       <div className="kpi-grid" style={{ marginTop: 24 }}>
         <KPICard label="MÉDIAS ACTIFS" value={data.medias_actifs} sub={`sur ${data.medias_total} au total`} />

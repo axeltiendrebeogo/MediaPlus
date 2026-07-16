@@ -66,11 +66,6 @@ function MediaCard({ media, onDelete }) {
         </div>
       )}
 
-      {hasGestionnaire && (
-        <div className="media-affectation-note">
-          Affectation gérée par le Contrôleur
-        </div>
-      )}
     </div>
   );
 }
