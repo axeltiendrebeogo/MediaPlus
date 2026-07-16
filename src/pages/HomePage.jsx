@@ -179,7 +179,7 @@ export default function HomePage() {
       {/* ── Footer ── */}
       <footer className="home-footer">
         <span className="font-semibold">Mediaplus</span>
-        <span className="text-muted">© 2025 — Plateforme d'analyse d'audience des médias en ligne</span>
+        <span className="text-muted">© 2026 — Mediaplus</span>
       </footer>
     </div>
   );
