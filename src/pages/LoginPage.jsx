@@ -45,7 +45,7 @@ export default function LoginPage() {
       <div className="login-card">
         {/* Brand */}
         <div className="login-brand">
-          <h1 className="login-brand-name">FasoMedia Insights</h1>
+          <h1 className="login-brand-name">Mediaplus</h1>
           <p className="login-brand-sub">Plateforme d'analyse d'audience</p>
         </div>
 

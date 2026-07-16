@@ -44,7 +44,7 @@ export default function HomePage() {
       {/* ── Navbar ── */}
       <nav className="home-nav">
         <div className="home-nav-brand">
-          <span className="home-brand-name">FasoMedia Insights</span>
+          <span className="home-brand-name">Mediaplus</span>
           <span className="home-brand-tagline">Analyse d'audience</span>
         </div>
         <button className="btn btn-secondary" onClick={() => navigate('/connexion')}>
@@ -62,7 +62,7 @@ export default function HomePage() {
               <span className="text-primary">Développez votre impact.</span>
             </h1>
             <p className="hero-desc">
-              FasoMedia Insights centralise l'analyse d'audience de vos médias en ligne. Visiteurs,
+              Mediaplus centralise l'analyse d'audience de vos médias en ligne. Visiteurs,
               comportements, contenus — toutes vos données en un seul endroit.
             </p>
             <div className="hero-actions">
@@ -178,7 +178,7 @@ export default function HomePage() {
 
       {/* ── Footer ── */}
       <footer className="home-footer">
-        <span className="font-semibold">FasoMedia Insights</span>
+        <span className="font-semibold">Mediaplus</span>
         <span className="text-muted">© 2025 — Plateforme d'analyse d'audience des médias en ligne</span>
       </footer>
     </div>

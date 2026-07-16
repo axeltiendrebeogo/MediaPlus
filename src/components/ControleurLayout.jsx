@@ -28,7 +28,7 @@ export default function ControleurLayout({ children, pageTitle }) {
     <div className="admin-layout">
       <aside className="sidebar">
         <div className="sidebar-brand">
-          <span className="brand-name">FasoMedia Insights</span>
+          <span className="brand-name">Mediaplus</span>
           <span className="brand-sub">Analyse d'audience</span>
         </div>
 
